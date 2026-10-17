@@ -52,3 +52,12 @@ Licensed under either of:
 - MIT License
 
 at your option.
+
+
+## Maintenance
+
+CI uses the shared tested-revision publisher with three-platform
+extracted-package tests, scoped App updates and daily dependency checks.
+Build scripts pass their checkout directory explicitly to Rhusky;
+repository environment settings are not publishing or hook authority.
+See `.github/PUBLISH.md` for the single release path.

@@ -11,7 +11,7 @@ pub enum UpgradeDecision {
     /// The available version is older. Downgrade refused unless the
     /// caller explicitly allows an override.
     Downgrade,
-    /// The current value is a development build; build numbers are not
+    /// At least one value is a development build; build numbers are not
     /// comparable with release builds. Upgrade refused unless the
     /// caller explicitly allows an override.
     DevBuild,

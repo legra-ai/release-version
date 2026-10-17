@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Semantic release versions with build provenance and upgrade decisions"
 authors = ["Jacobus Geluk <jacobus.geluk@dataroad.com>"]
 edition = "2024"
-rust-version = "1.89"
+rust-version = "1.89.0"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/legra-ai/release-version"
 documentation = "https://docs.rs/release-version"
@@ -12,20 +12,13 @@ readme = "README.md"
 keywords = ["semver", "release", "version", "upgrade", "build"]
 categories = ["development-tools", "config"]
 build = "build.rs"
-include = [
-    "Cargo.toml",
-    "README.md",
-    "LICENSE-APACHE",
-    "LICENSE-MIT",
-    "build.rs",
-    "src/**/*.rs",
-]
+include = ["src/**", "tests/**", "build.rs", "Cargo.toml", "Cargo.lock", "README.md", "LICENSE-MIT", "LICENSE-APACHE"]
 
 [dependencies]
 semver = "1"
 
 [build-dependencies]
-rhusky = "0.0.6"
+rhusky = "2.0.0"
 
 [lints.rust]
 missing_docs = "deny"
