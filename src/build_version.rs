@@ -10,11 +10,9 @@ use crate::upgrade_decision::UpgradeDecision;
 /// A parsed release version combining semantic version, build number,
 /// and development-build provenance.
 ///
-/// Two `BuildVersion` values are only meaningfully comparable when
-/// both originate from the same build source (both CI or both dev).
-/// When the semver components are equal but the build sources differ,
-/// [`UpgradeDecision::DevBuild`] is returned instead of a numeric
-/// build-number comparison.
+/// Equal semantic versions compare build numbers only when both values
+/// are releases. If either is a development build, an explicit override
+/// is required and [`UpgradeDecision::DevBuild`] is returned otherwise.
 #[derive(Debug, Clone)]
 pub struct BuildVersion {
     semver: Version,
@@ -86,7 +84,7 @@ impl BuildVersion {
         }
 
         // Semver is equal — check build provenance and number.
-        if self.dev_build {
+        if self.dev_build || available.dev_build {
             return if allow_override {
                 UpgradeDecision::Upgrade
             } else {
